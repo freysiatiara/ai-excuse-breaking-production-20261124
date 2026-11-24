@@ -19,6 +19,8 @@ def main() -> None:
         )
     if not LINE.strip():
         raise SystemExit("entry must not be only whitespace")
+    if "\n" in LINE or "\r" in LINE:
+        raise SystemExit("entry must be a single line, no newline characters")
 
     out_path = os.environ.get("ENTRY_OUTPUT", "/output/entry.txt")
     parent = os.path.dirname(out_path)
